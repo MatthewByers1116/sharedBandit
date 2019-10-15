@@ -8,12 +8,12 @@ import gzip
 
 
 def heroNameGen():
-    heroNames = ["Dr G", "Matt Byers"]
+    heroNames = ["Dr Giacobe", "The Nittany Lion", "President Barron"]
     return random.choice(heroNames)
 
 
 def goalNameGen():
-    goalNames = ["Canvas account", "Lionpath account", "Angel account"]
+    goalNames = ["Canvas account", "Lionpath account","Outlook account"]
     return random.choice(goalNames)
 
 
@@ -55,7 +55,16 @@ def makeOpener(levelName,stringToWrite):
     opener = stringToWrite
     makeMe("/home/" + levelName + "/README.txt")
     f = open("/home/" + levelName + "/README.txt", "w")
+    starBar = ''
+    i = 0
+    while(i < len(stringToWrite)):
+        starBar+='*'
+
+    f.write(starBar+'\n')
     f.write(opener)
+    f.write(starBar+'\n')
+    f.write("Once you find the password, log into the next level with the password")
+    f.write(starBar+'\n')
     f.close()
 
 
@@ -479,56 +488,98 @@ def genRanLevel(nextLevelPassword,levelName):
         level11(nextLevelPassword,levelName)
 
 
-print("Making your levels now, please hold")
+print("Welcome to PolyBandit initial setup! Please follow the instructions as they come on screen.\n")
+username = input("Please enter your Penn State email address. Example: acb1234@psu.edu\n")
+print("Thank you! Setting up your levels now! Please hold...")
+toolbar_width = 40
+
+# setup toolbar
+sys.stdout.write("[%s]" % (" " * toolbar_width))
+sys.stdout.flush()
+sys.stdout.write("\b" * (toolbar_width+1)) # return to start of line, after '['
 
 passwordToBe = makeRanString(8)+'\n'
 makeLevelHome("level0","level0")
 level0(passwordToBe,"level0")
 makeLevelHome(passwordToBe,"level1")
+sys.stdout.write("-")
+sys.stdout.flush()
 
 passwordToBe = makeRanString(8)+'\n'
 level1(passwordToBe,"level1")
 makeLevelHome(passwordToBe,"level2")
+sys.stdout.write("-")
+sys.stdout.flush()
+
 
 passwordToBe = makeRanString(8)+'\n'
 level2(passwordToBe,"level2")
 makeLevelHome(passwordToBe,"level3")
+sys.stdout.write("-")
+sys.stdout.flush()
+
 
 passwordToBe = makeRanString(8)+'\n'
 level3(passwordToBe,"level3")
 makeLevelHome(passwordToBe,"level4")
+sys.stdout.write("-")
+sys.stdout.flush()
+
 
 passwordToBe = makeRanString(8)+'\n'
 level4(passwordToBe,"level4")
 makeLevelHome(passwordToBe,"level5")
+sys.stdout.write("-")
+sys.stdout.flush()
+
 
 passwordToBe = makeRanString(8)+'\n'
 level5(passwordToBe,"level5")
 makeLevelHome(passwordToBe,"level6")
+sys.stdout.write("-")
+sys.stdout.flush()
+
 
 passwordToBe = makeRanString(8)+'\n'
 level6(passwordToBe,"level6")
 makeLevelHome(passwordToBe,"level7")
+sys.stdout.write("-")
+sys.stdout.flush()
+
 
 passwordToBe = makeRanString(8)+'\n'
 level7(passwordToBe,"level7")
 makeLevelHome(passwordToBe,"level8")
+sys.stdout.write("-")
+sys.stdout.flush()
+
 
 passwordToBe = makeRanString(8)+'\n'
 level8(passwordToBe,"level8")
 makeLevelHome(passwordToBe,"level9")
+sys.stdout.write("-")
+sys.stdout.flush()
+
 
 passwordToBe = makeRanString(8)+'\n'
 level9(passwordToBe,"level9")
 makeLevelHome(passwordToBe,"level10")
+sys.stdout.write("-")
+sys.stdout.flush()
+
 
 passwordToBe = makeRanString(8)+'\n'
 level10(passwordToBe,"level10")
 makeLevelHome(passwordToBe,"level11")
+sys.stdout.write("-")
+sys.stdout.flush()
+
 
 passwordToBe = makeRanString(8)+'\n'
 level11(passwordToBe,"level11")
 makeLevelHome(passwordToBe,"level12")
+sys.stdout.write("-")
+sys.stdout.flush()
 
 
 
@@ -540,10 +591,14 @@ while levelCount < 100:
     genRanLevel(passwordToBe,"level"+str(levelCount))
     levelCount += 1
     makeLevelHome(passwordToBe,"level"+str(levelCount))
+    sys.stdout.write("-")
+    sys.stdout.flush()
+sys.stdout.write("]\n") # this ends the progress bar
+print("ALL done!\n")
 
 
-print("The password to level 0 localhost is “level 0”")
-
+print("The password to level 0 localhost is “level 0” Please log into level 0 by using the ssh command\n")
+print("hint: ssh level0@localhost is the command you will need to use")
 
 
 
