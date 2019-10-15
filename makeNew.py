@@ -3,7 +3,6 @@ import hashlib
 import base64
 import os
 import random
-import base64
 import gzip
 
 
@@ -33,17 +32,14 @@ def makeRanString(len):
     return name
 
 
-def makePassword(len):
-    count = 0
-    passwordToreturn = ''
-    while count < len:
-        x = random.randint(0, 10)
-        if (x <= 5):
-            passwordToreturn += giveRanLetter()
-        else:
-            passwordToreturn += str(random.randint(0, 10))
-        count += 1
-    return passwordToreturn
+def makePassword(len,username,levelname):
+    encodeSeed = username + levelname
+    hashed = hashlib.md5(encodeSeed.encode('utf-8'))
+    based = base64.b64encode(hashed.digest())
+    passwordToFind = str(based)
+    passwordToReturn = passwordToFind[0:len]
+
+    return passwordToReturn
 
 
 def makeMe(desiredName):
@@ -417,38 +413,6 @@ def level11(password,levelName):
     g.write(str(base64.b64encode(password.encode("utf-8")), "utf-8") + '\n')
     g.close()
 
-def level12(password,levelName):
-    partOnePass = password[0:3]
-    partTwoPass = password[4:7]
-    levelhero = heroNameGen()
-    makeMe("/home/"+levelName+"/Desktop/")
-    makeMe("/home/"+levelName+"/Desktop/"+levelhero+"FamilyVacation")
-    makeMe("/home/"+levelName+"/Documents")
-    makeMe("/home/"+levelName+"/Downloads")
-    makeMe("/home/"+levelName+"/Music")
-    makeMe("/home/"+levelName+"/Pictures")
-    makeMe("/home/"+levelName+"/Videos")
-
-# now = datetime.datetime.now()
-# print ("Current date and time as a unit")
-# print (str(now))
-
-
-# name = input("Please enter your PSU ID (abc1234):	")
-
-print ("Setting up the levels now, please stand by...")
-
-# “+levelName+”_5 = name + str(now.year) + str(now.month) + str(now.day) + str(now.hour) + str(now.minute) + str(now.second)
-# print(“+levelName+”_5)
-# hashed1_5 = hashlib.md5(“+levelName+”_5.encode('utf-8'))
-# print (hashed1_5.digest)
-# based1_5 = base64.b64encode(hashed1_5.digest())
-# print (based1_5)
-# passwordToFind = str(based1_5)
-# paswardOne = passwordToFind[0:9]
-
-
-key = makeRanString(8)+'\n'
 
 delCounter = 0
 while (delCounter <= 101):
