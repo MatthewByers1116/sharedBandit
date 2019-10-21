@@ -82,14 +82,11 @@ def level0(paswardone,levelName):
 
 
 def level1(passwardTwo,levelName):
-    print("level One initalized")
     makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " account is in inhere.txt but something is off, the file is hidden!\nYou will have to search for hidden files to get it.\n")
-    print("Opener finished")
     makeMe("/home/"+levelName+"/.inhere.txt")
     g = open("/home/"+levelName+"/.inhere.txt", "w")
     g.write(passwardTwo)
     g.close()
-    print("file written")
     os.system('chown '+levelName+':'+levelName+' /home/'+levelName+"/.inhere.txt;")
 
 
