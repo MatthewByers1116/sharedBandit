@@ -34,8 +34,8 @@ def makeRanString(len):
     return name
 
 
-def makePassword(len,username,levelname):
-    encodeSeed = username + levelname
+def makePassword(len,username,levelname,gamdeCode):
+    encodeSeed = username + levelname + gameCode
     hashed = hashlib.md5(encodeSeed.encode('utf-8'))
     based = base64.b64encode(hashed.digest())
     passwordToFind = str(based)
@@ -44,7 +44,7 @@ def makePassword(len,username,levelname):
     return passwordToReturn
 
 def makeFakePassword(len):
-    return makePassword(len,makeRanString(13),makeRanString(7))
+    return makePassword(len,makeRanString(13),makeRanString(7),makeRanString(6))
 
 def makeMe(desiredName):
     dirName = os.path.dirname(desiredName)
@@ -377,24 +377,27 @@ def genRanLevel(nextLevelPassword,levelName):
 
 print("Welcome to PolyBandit initial setup! Please follow the instructions as they come on screen.\n")
 username = input("Please enter your Penn State email address. Example: acb1234@psu.edu\n")
+gameCode = makeRanString(6)
+print("Welcome" + username + " your unique game code is: " + gameCode + " you will need to save this to check your scores with your professor.")
+confirmation = input("Please press enter after you have saved your code somewhere safe, and we will start the set up process.")
 print("Thank you! Setting up your levels now! Please hold...")
 sys.stdout.write("[")
 sys.stdout.flush()
-passwordToBe = makePassword(8,username,'level1')+'\n'
+passwordToBe = makePassword(8,username,'level1',gameCode)+'\n'
 makeLevelHome("level0","level0")
 level0(passwordToBe,"level0")
 makeLevelHome(passwordToBe,"level1")
 sys.stdout.write("*")
 sys.stdout.flush()
 
-passwordToBe = makePassword(8,username,'level2')+'\n'
+passwordToBe = makePassword(8,username,'level2',gameCode)+'\n'
 level1(passwordToBe,"level1")
 makeLevelHome(passwordToBe,"level2")
 sys.stdout.write("*")
 sys.stdout.flush()
 
 
-passwordToBe = makePassword(8,username,'level3')+'\n'
+passwordToBe = makePassword(8,username,'level3',gameCode)+'\n'
 level2(passwordToBe,"level2")
 makeLevelHome(passwordToBe,"level3")
 sys.stdout.write("*")
@@ -402,14 +405,14 @@ sys.stdout.flush()
 
 
 
-passwordToBe = makePassword(8,username,'level4')+'\n'
+passwordToBe = makePassword(8,username,'level4',gameCode)+'\n'
 level3(passwordToBe,"level3")
 makeLevelHome(passwordToBe,"level4")
 sys.stdout.write("*")
 sys.stdout.flush()
 
 
-passwordToBe = makePassword(8,username,'level5')+'\n'
+passwordToBe = makePassword(8,username,'level5',gameCode)+'\n'
 level4(passwordToBe,"level4")
 makeLevelHome(passwordToBe,"level5")
 sys.stdout.write("*")
@@ -417,7 +420,7 @@ sys.stdout.flush()
 
 
 
-passwordToBe = makePassword(8,username,'level6')+'\n'
+passwordToBe = makePassword(8,username,'level6',gameCode)+'\n'
 level5(passwordToBe,"level5")
 makeLevelHome(passwordToBe,"level6")
 sys.stdout.write("*")
@@ -425,14 +428,14 @@ sys.stdout.flush()
 
 
 
-passwordToBe = makePassword(8,username,'level7')+'\n'
+passwordToBe = makePassword(8,username,'level7',gameCode)+'\n'
 level6(passwordToBe,"level6")
 makeLevelHome(passwordToBe,"level7")
 sys.stdout.write("*")
 sys.stdout.flush()
 
 
-passwordToBe = makePassword(8,username,'level8')+'\n'
+passwordToBe = makePassword(8,username,'level8',gameCode)+'\n'
 level7(passwordToBe,"level7")
 makeLevelHome(passwordToBe,"level8")
 sys.stdout.write("*")
@@ -440,7 +443,7 @@ sys.stdout.flush()
 
 
 
-passwordToBe = makePassword(8,username,'level9')+'\n'
+passwordToBe = makePassword(8,username,'level9',gameCode)+'\n'
 level8(passwordToBe,"level8")
 makeLevelHome(passwordToBe,"level9")
 sys.stdout.write("*")
@@ -448,7 +451,7 @@ sys.stdout.flush()
 
 
 
-passwordToBe = makePassword(8,username,'level10')+'\n'
+passwordToBe = makePassword(8,username,'level10',gameCode)+'\n'
 level9(passwordToBe,"level9")
 makeLevelHome(passwordToBe,"level10")
 sys.stdout.write("*")
@@ -456,7 +459,7 @@ sys.stdout.flush()
 
 
 
-passwordToBe = makePassword(8,username,'level11')+'\n'
+passwordToBe = makePassword(8,username,'level11',gameCode)+'\n'
 level10(passwordToBe,"level10")
 makeLevelHome(passwordToBe,"level11")
 sys.stdout.write("*")
@@ -464,7 +467,7 @@ sys.stdout.flush()
 
 
 
-passwordToBe = makePassword(8,username,'level12')+'\n'
+passwordToBe = makePassword(8,username,'level12',gameCode)+'\n'
 level11(passwordToBe,"level11")
 makeLevelHome(passwordToBe,"level12")
 sys.stdout.write("*")
@@ -477,7 +480,7 @@ sys.stdout.flush()
 
 levelCount = 12
 while levelCount <= 100:
-    passwordToBe = passwordToBe = makePassword(8,username,'level'+str(levelCount))+'\n'
+    passwordToBe = passwordToBe = makePassword(8,username,'level'+str(levelCount),gameCode)+'\n'
     genRanLevel(passwordToBe,"level"+str(levelCount))
     levelCount += 1
     makeLevelHome(passwordToBe,"level"+str(levelCount))
