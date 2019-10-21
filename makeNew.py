@@ -42,6 +42,8 @@ def makePassword(len,username,levelname):
 
     return passwordToReturn
 
+def makeFakePassword(len):
+    return makePassword(len,makeRanString(13),makeRanString(7))
 
 def makeMe(desiredName):
     dirName = os.path.dirname(desiredName)
@@ -63,11 +65,13 @@ def makeOpener(levelName,stringToWrite):
     f.write("Once you find the password, log into the next level with the password")
     f.write(starBar+'\n')
     f.close()
+    makeMe("/home/" + levelName + "/.bashrc")
+    os.system("echo \"cat ~/README.txt\" >> /home/" + levelName + "/.bashrc")
+
 
 
 def level0(paswardone,levelName):
     makeOpener(levelName, heroNameGen() + "'s password for their " + goalNameGen() + " is in inhere.txt\n")
-    os.system("echo \"cat ~/README.txt\" >> /home/"+levelName+"/.bashrc")
     makeMe("/home/"+levelName+"/inhere.txt")
     g = open("/home/"+levelName+"/inhere.txt", "w")
     g.write(paswardone)
@@ -76,14 +80,7 @@ def level0(paswardone,levelName):
 
 
 def level1(passwardTwo,levelName):
-    opener = (
-                heroNameGen() + "'s password for their " + goalNameGen() + " account is in inhere.txt but something is off, its hidden.\n")
-    makeMe("/home/"+levelName+"/README.txt")
-    f = open("/home/"+levelName+"/README.txt", "w")
-    f.write(opener)
-    f.close()
-    os.system("echo \"cat ~/README.txt\" >> /home/" + levelName + "/.bashrc")
-
+    makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " account is in inhere.txt but something is off, its hidden. You will have to search for hidden files to get it.\n")
     makeMe("/home/"+levelName+"/.inhere.txt")
     g = open("/home/"+levelName+"/.inhere.txt", "w")
     g.write(passwardTwo)
@@ -92,12 +89,7 @@ def level1(passwardTwo,levelName):
 
 
 def level2(passwardThree,levelName):
-    opener = (heroNameGen() + "'s password for their " + goalNameGen() + " is in the file that is only 9 bytes long\n")
-    makeMe("/home/"+levelName+"/README.txt")
-    f = open("/home/"+levelName+"/README.txt", "w")
-    f.write(opener)
-    f.close()
-    os.system("echo \"cat ~/README.txt\" >> /home/" + levelName + "/.bashrc")
+    makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " is in the file that is only 9 bytes long\n")
 
     password_spot = random.randint(1, 9)
     count = 0
@@ -154,33 +146,16 @@ def level3(passwardFour,levelName):
             char6 = giveRanLetter()
             char7 = giveRanLetter()
             char8 = giveRanLetter()
-            char9 = giveRanLetter()
-            char10 = giveRanLetter()
-            char11 = giveRanLetter()
-            char12 = giveRanLetter()
-            char13 = giveRanLetter()
-            char14 = giveRanLetter()
-            char15 = giveRanLetter()
-            char16 = giveRanLetter()
-            rand_pass = char1 + char2 + char3 + char4 + char5 + char6 + char7 + char8 + "      " + char9 + char10 + char11 + char12 + char13 + char14 + char15 + char16 + "\n"
+            rand_pass = char1 + char2 + char3 + char4 + char5 + char6 + char7 + char8 + "      " + makeFakePassword(8) + "\n"
             f = open("/home/"+levelName+"/inhere.txt", "a")
             f.write(rand_pass)
             count += 1
-    opener = ("The password you seek is next to the line.... " + hint + "\n")
-    makeMe("/home/"+levelName+"/README.txt")
-    f = open("/home/"+levelName+"/README.txt", "w")
-    f.write(opener)
-    f.close()
-    os.system("echo \"cat ~/README.txt\" >> /home/" + levelName + "/.bashrc")
+    makeOpener(levelName,"The password you seek is next to the line.... " + hint + "\n")
     os.system("chown "+levelName+":"+levelName+" /home/"+levelName+"/inhere.txt;")
 
 
 def level4(passwardFour,levelName):
-    makeMe("/home/"+levelName+"/README.txt")
-    f = open("/home/"+levelName+"/README.txt", "w")
-    f.write(
-        heroNameGen() + "'s password for their " + goalNameGen() + " is next to the word you would find last when sorted alphabetically.\n")
-    f.close()
+    makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " is next to the word you would find last when sorted alphabetically.\n")
 
     makeMe("/home/"+levelName+"/inhere.txt")
     f = open("/home/"+levelName+"/inhere.txt", "w")
@@ -193,14 +168,6 @@ def level4(passwardFour,levelName):
     random.shuffle(words)
     count = 0
     while (count < len(words)):
-        char1 = giveRanLetter()
-        char2 = giveRanLetter()
-        char3 = giveRanLetter()
-        char4 = giveRanLetter()
-        char5 = giveRanLetter()
-        char6 = giveRanLetter()
-        char7 = giveRanLetter()
-        char8 = giveRanLetter()
 
         if words[count] == " zonked ":
             ans = passwardFour
@@ -209,7 +176,7 @@ def level4(passwardFour,levelName):
             f.close()
 
         else:
-            ans = char1 + char2 + char3 + char4 + char5 + char6 + char7 + char8
+            ans = makeFakePassword(8)
             f = open("/home/"+levelName+"/inhere.txt", "a")
             f.write(words[count] + "      " + ans + '\n')
             f.close()
@@ -219,41 +186,19 @@ def level4(passwardFour,levelName):
 
 
 def level5(passwardSix,levelName):
-    makeMe("/home/"+levelName+"/README.txt")
-    f = open("/home/"+levelName+"/README.txt", "w")
-    f.write(
-        heroNameGen() + "'s password for their " + goalNameGen() + " is inside the file named inhere.txt\n")
-    f.close()
-    os.system("echo \"cat ~/README.txt\" >> /home/" + levelName + "/.bashrc")
+    makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " is inside the file named inhere.txt\n")
+
 
     password_spot1 = random.randint(1, 10)
     password_spot2 = random.randint(1, 10)
     password_spot3 = random.randint(1, 10)
     count = 0
     while (count < 10):
-        char1 = giveRanLetter()
-        char2 = giveRanLetter()
-        char3 = giveRanLetter()
-        char4 = giveRanLetter()
-        char5 = giveRanLetter()
-        char6 = giveRanLetter()
-        char7 = giveRanLetter()
-        char8 = giveRanLetter()
-
-        rand_dir1 = char1 + char2 + char3 + char4 + char5 + char6 + char7 + char8
+        rand_dir1 = makeRanString(8)
         makeMe("/home/"+levelName+"/" + rand_dir1)
         count2 = 0
         while (count2 < 10):
-            charr1 = giveRanLetter()
-            charr2 = giveRanLetter()
-            charr3 = giveRanLetter()
-            charr4 = giveRanLetter()
-            charr5 = giveRanLetter()
-            charr6 = giveRanLetter()
-            charr7 = giveRanLetter()
-            charr8 = giveRanLetter()
-
-            rand_dir2 = charr1 + charr2 + charr3 + charr4 + charr5 + charr6 + charr7 + charr8
+            rand_dir2 = makeRanString(8)
             makeMe("/home/"+levelName+"/" + rand_dir1 + '/' + rand_dir2)
             count3 = 0
             while (count3 < 10):
@@ -269,7 +214,7 @@ def level5(passwardSix,levelName):
                     makeMe("/home/"+levelName+"/" + rand_dir1 + '/' + rand_dir2 + '/' + rand_file)
 
                     g = open("/home/"+levelName+"/" + rand_dir1 + '/' + rand_dir2 + '/' + rand_file, "w")
-                    g.write(passwardSix)
+                    g.write(makeFakePassword(8))
                     g.close()
                     os.system("chown "+levelName+":"+levelName+" /home/"+levelName+"/" + rand_dir1 + '/' + rand_dir2 + '/' + rand_file + ';')
                 count3 += 1
@@ -278,13 +223,8 @@ def level5(passwardSix,levelName):
 
 
 def level6(passwardSeven,levelName):
-    opener = (
-                heroNameGen() + "'s password for their " + goalNameGen() + " is in the inhere.txt file, how ever they seem to have accidentally gzipped it. Can you help them?\n")
-    makeMe("/home/"+levelName+"/README.txt")
-    f = open("/home/"+levelName+"/README.txt", "w")
-    f.write(opener)
-    f.close()
-    os.system("echo \"cat ~/README.txt\" >> /home/" + levelName + "/.bashrc")
+    makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " is in the inhere.txt file, how ever they seem to have accidentally gzipped it. Can you help them?\n")
+
 
     makeMe("/home/"+levelName+"/inhere.txt")
     g = gzip.open("/home/"+levelName+"/inhere.txt.gz", "wb")
@@ -294,13 +234,8 @@ def level6(passwardSeven,levelName):
 
 
 def level7(passwardEight,levelName):
-    opener = (
-                heroNameGen() + "'s password for their " + goalNameGen() + " is in the inhere.txt file, how ever they seem to have lost permission to read it\n")
-    makeMe("/home/"+levelName+"/README.txt")
-    f = open("/home/"+levelName+"/README.txt", "w")
-    f.write(opener)
-    f.close()
-    os.system("echo \"cat ~/README.txt\" >> /home/" + levelName + "/.bashrc")
+    makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " is in the inhere.txt file, how ever they seem to have lost permission to read it\n")
+
 
     makeMe("/home/"+levelName+"/inhere.txt")
     g = open("/home/"+levelName+"/inhere.txt", "w")
@@ -312,14 +247,10 @@ def level7(passwardEight,levelName):
 
 def level8(passwordNine,levelName):
     passwordCount = random.randint(1, 255)
-    opener = (
+    makeOpener(levelName,
             heroNameGen() + "'s password for their " + goalNameGen() + " is in an unknown file. But they do believe the file had " + str(
         passwordCount) + " words. \n the password should be the last word in the file.\n")
-    makeMe("/home/"+levelName+"/README.txt")
-    f = open("/home/"+levelName+"/README.txt", "w")
-    f.write(opener)
-    f.close()
-    os.system("echo \"cat ~/README.txt\" >> /home/" + levelName + "/.bashrc")
+
 
     passwordSpot = random.randint(1, 10)
     i = 0
@@ -356,24 +287,22 @@ def level8(passwordNine,levelName):
 
 def level9(passwardTen,levelName):
     opener = (
-            heroNameGen() + "'s password for their " + goalNameGen() + " account is in inhere.txt but something is off, its hidden.\n")
+            heroNameGen() + "'s password for their " + goalNameGen() + " account is in inhere.txt But there are some issues. The file's been hidden and they wrote the name with a space\n")
     makeMe("/home/"+levelName+"/README.txt")
     f = open("/home/"+levelName+"/README.txt", "w")
     f.write(opener)
     f.close()
+
     os.system("echo \"cat ~/README.txt\" >> /home/" + levelName + "/.bashrc")
     g = open("/home/"+levelName+"/.in here.txt", "w+")
     g.write(passwardTen)
     g.close()
 
 
-def level10(final,levelName):
-    opener = (heroNameGen() + "'s password for their " + goalNameGen() + " is the only different word\n")
-    makeMe("/home/"+levelName+"/README.txt")
-    f = open("/home/"+levelName+"/README.txt", "w")
-    f.write(opener)
-    f.close()
-    os.system("echo \"cat ~/README.txt\" >> /home/" + levelName + "/.bashrc")
+def level10(passwordEleven,levelName):
+    makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " is the only different word\n")
+
+
     makeMe("/home/"+levelName+"/inhere1.txt")
     f = open("/home/"+levelName+"/inhere1.txt", "w")
     f.write('')
@@ -386,10 +315,10 @@ def level10(final,levelName):
     password_spot = random.randint(0, 256)
     count = 0
     while (count < 256):
-        rand_pass = makeRanString(8) + '\n'
+        rand_pass = makeFakePassword(8)
         f = open("/home/"+levelName+"/inhere1.txt", "a")
         if count == password_spot:
-            f.write(final)
+            f.write(passwordEleven)
         else:
             f.write(rand_pass)
         f.close()
@@ -402,12 +331,8 @@ def level10(final,levelName):
 
 
 def level11(password,levelName):
-    opener = heroNameGen() + " accidentally encoded their " + goalNameGen() + " password in base 64! They cant read whatever is in inhere.txt but maybe you can?\n"
-    makeMe("/home/"+levelName+"/README.txt")
-    f = open("/home/"+levelName+"/README.txt", "w+")
-    f.write(opener)
-    f.close()
-    os.system("echo \"cat ~/README.txt\" >> /home/" + levelName + "/.bashrc")
+    makeOpener(levelName, heroNameGen() + " accidentally encoded their " + goalNameGen() + " password in base 64! They cant read whatever is in inhere.txt but maybe you can?\n")
+
 
     makeMe("/home/"+levelName+"/inhere.txt")
     g = open("/home/"+levelName+"/inhere.txt", "w+")
