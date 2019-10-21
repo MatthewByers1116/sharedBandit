@@ -123,33 +123,17 @@ def level2(passwardThree,levelName):
 def level3(passwardFour,levelName):
     password_spot = random.randint(1, 256)
     count = 0
+    hint = makeRanString(8)
     while (count < 256):
         if count == password_spot:
-            char1 = giveRanLetter()
-            char2 = giveRanLetter()
-            char3 = giveRanLetter()
-            char4 = giveRanLetter()
-            char5 = giveRanLetter()
-            char6 = giveRanLetter()
-            char7 = giveRanLetter()
-            char8 = giveRanLetter()
-            rand_pass = char1 + char2 + char3 + char4 + char5 + char6 + char7 + char8 + "      " + passwardFour
+            rand_pass = hint + "      " + passwardFour
             makeMe("/home/"+levelName+"/inhere.txt")
             f = open("/home/"+levelName+"/inhere.txt", "a")
             f.write(rand_pass)
             f.close()
-            hint = char1 + char2 + char3 + char4 + char5 + char6 + char7 + char8
             count += 1
         else:
-            char1 = giveRanLetter()
-            char2 = giveRanLetter()
-            char3 = giveRanLetter()
-            char4 = giveRanLetter()
-            char5 = giveRanLetter()
-            char6 = giveRanLetter()
-            char7 = giveRanLetter()
-            char8 = giveRanLetter()
-            rand_pass = char1 + char2 + char3 + char4 + char5 + char6 + char7 + char8 + "      " + makeFakePassword(8) + "\n"
+            rand_pass = makeRanString(8) + "      " + makeFakePassword(8) + "\n"
             makeMe("/home/"+levelName+"/inhere.txt")
             f = open("/home/"+levelName+"/inhere.txt", "a")
             f.write(rand_pass)
