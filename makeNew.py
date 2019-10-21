@@ -133,6 +133,7 @@ def level3(passwardFour,levelName):
             char7 = giveRanLetter()
             char8 = giveRanLetter()
             rand_pass = char1 + char2 + char3 + char4 + char5 + char6 + char7 + char8 + "      " + passwardFour
+            makeMe("/home/"+levelName+"/inhere.txt")
             f = open("/home/"+levelName+"/inhere.txt", "a")
             f.write(rand_pass)
             f.close()
@@ -148,6 +149,7 @@ def level3(passwardFour,levelName):
             char7 = giveRanLetter()
             char8 = giveRanLetter()
             rand_pass = char1 + char2 + char3 + char4 + char5 + char6 + char7 + char8 + "      " + makeFakePassword(8) + "\n"
+            makeMe("/home/"+levelName+"/inhere.txt")
             f = open("/home/"+levelName+"/inhere.txt", "a")
             f.write(rand_pass)
             count += 1
