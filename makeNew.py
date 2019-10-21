@@ -461,7 +461,7 @@ while levelCount < 100:
 print("ALL done!\n")
 
 
-print("The password to level 0 localhost is “level 0” Please log into level 0 by using the ssh command\n")
+print("The password to level 0 localhost is “level0” Please log into level 0 by using the ssh command\n")
 print("hint: ssh level0@localhost is the command you will need to use")
 
 
