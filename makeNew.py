@@ -58,6 +58,7 @@ def makeOpener(levelName,stringToWrite):
     i = 0
     while(i < len(stringToWrite)):
         starBar+='*'
+        i = i + 1
 
     f.write(starBar+'\n')
     f.write(opener)
