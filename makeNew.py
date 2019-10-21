@@ -378,7 +378,7 @@ def genRanLevel(nextLevelPassword,levelName):
 print("Welcome to PolyBandit initial setup! Please follow the instructions as they come on screen.\n")
 username = input("Please enter your Penn State email address. Example: acb1234@psu.edu\n")
 gameCode = makeRanString(6)
-print("Welcome" + username + " your unique game code is: " + gameCode + " you will need to save this to check your scores with your professor.")
+print("Welcome " + username + " your unique game code is: " + gameCode + " you will need to save this to check your scores with your professor.")
 confirmation = input("Please press enter after you have saved your code somewhere safe, and we will start the set up process.")
 print("Thank you! Setting up your levels now! Please hold...")
 sys.stdout.write("[")
