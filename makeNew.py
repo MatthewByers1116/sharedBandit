@@ -62,7 +62,7 @@ def makeOpener(levelName,stringToWrite):
     f.write(starBar+'\n')
     f.write(opener)
     f.write(starBar+'\n')
-    f.write("Once you find the password, log into the next level with the password")
+    f.write("Once you find the password, log into the next level with the password.\nExample: You've completed level1 now SSH into level2")
     f.write(starBar+'\n')
     f.close()
     makeMe("/home/" + levelName + "/.bashrc")
@@ -80,7 +80,7 @@ def level0(paswardone,levelName):
 
 
 def level1(passwardTwo,levelName):
-    makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " account is in inhere.txt but something is off, its hidden. You will have to search for hidden files to get it.\n")
+    makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " account is in inhere.txt but something is off, the file is hidden!\nYou will have to search for hidden files to get it.\n")
     makeMe("/home/"+levelName+"/.inhere.txt")
     g = open("/home/"+levelName+"/.inhere.txt", "w")
     g.write(passwardTwo)
@@ -89,7 +89,7 @@ def level1(passwardTwo,levelName):
 
 
 def level2(passwardThree,levelName):
-    makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " is in the file that is only 9 bytes long\n")
+    makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " is in the file that is only 9 bytes long.\n")
 
     password_spot = random.randint(1, 9)
     count = 0
