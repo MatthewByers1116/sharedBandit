@@ -48,11 +48,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/makeNew.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="135" column="39" selection-start-line="135" selection-start-column="39" selection-end-line="135" selection-end-column="39" />
+            <state>
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
-                <marker date="1571662724248" expanded="true" signature="1223:1306" ph="..." />
+                <element signature="e#1#15#0" expanded="true" />
+                <marker date="1571663078752" expanded="true" signature="1195:1278" ph="..." />
               </folding>
             </state>
           </provider>
@@ -181,11 +180,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/makeNew.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="135" column="39" selection-start-line="135" selection-start-column="39" selection-end-line="135" selection-end-column="39" />
+        <state>
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1571662724248" expanded="true" signature="1223:1306" ph="..." />
+            <element signature="e#1#15#0" expanded="true" />
+            <marker date="1571663078752" expanded="true" signature="1195:1278" ph="..." />
           </folding>
         </state>
       </provider>
