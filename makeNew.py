@@ -1,4 +1,5 @@
 import datetime
+import time
 import hashlib
 import base64
 import os
@@ -349,7 +350,7 @@ while (delCounter <= 101):
     #"userdel level“+delCounter+” --force --remove"
     delCounter+=1
 
-
+time.sleep(4)
 
 def makeLevelHome(levelPassword,levelName):
     os.system(
@@ -384,95 +385,74 @@ def genRanLevel(nextLevelPassword,levelName):
 print("Welcome to PolyBandit initial setup! Please follow the instructions as they come on screen.\n")
 username = input("Please enter your Penn State email address. Example: acb1234@psu.edu\n")
 print("Thank you! Setting up your levels now! Please hold...")
-toolbar_width = 40
 
-# setup toolbar
-sys.stdout.write("[%s]" % (" " * toolbar_width))
-sys.stdout.flush()
-sys.stdout.write("\b" * (toolbar_width+1)) # return to start of line, after '['
 
 passwordToBe = makePassword(8,username,'level1')+'\n'
 makeLevelHome("level0","level0")
 level0(passwordToBe,"level0")
 makeLevelHome(passwordToBe,"level1")
-sys.stdout.write("-")
-sys.stdout.flush()
 
 passwordToBe = makePassword(8,username,'level2')+'\n'
 level1(passwordToBe,"level1")
 makeLevelHome(passwordToBe,"level2")
-sys.stdout.write("-")
-sys.stdout.flush()
 
 
 passwordToBe = makePassword(8,username,'level3')+'\n'
 level2(passwordToBe,"level2")
 makeLevelHome(passwordToBe,"level3")
-sys.stdout.write("-")
-sys.stdout.flush()
+
 
 
 passwordToBe = makePassword(8,username,'level4')+'\n'
 level3(passwordToBe,"level3")
 makeLevelHome(passwordToBe,"level4")
-sys.stdout.write("-")
-sys.stdout.flush()
 
 
 passwordToBe = makePassword(8,username,'level5')+'\n'
 level4(passwordToBe,"level4")
 makeLevelHome(passwordToBe,"level5")
-sys.stdout.write("-")
-sys.stdout.flush()
+
 
 
 passwordToBe = makePassword(8,username,'level6')+'\n'
 level5(passwordToBe,"level5")
 makeLevelHome(passwordToBe,"level6")
-sys.stdout.write("-")
-sys.stdout.flush()
+
 
 
 passwordToBe = makePassword(8,username,'level7')+'\n'
 level6(passwordToBe,"level6")
 makeLevelHome(passwordToBe,"level7")
-sys.stdout.write("-")
-sys.stdout.flush()
 
 
 passwordToBe = makePassword(8,username,'level8')+'\n'
 level7(passwordToBe,"level7")
 makeLevelHome(passwordToBe,"level8")
-sys.stdout.write("-")
-sys.stdout.flush()
+
 
 
 passwordToBe = makePassword(8,username,'level9')+'\n'
 level8(passwordToBe,"level8")
 makeLevelHome(passwordToBe,"level9")
-sys.stdout.write("-")
-sys.stdout.flush()
+
 
 
 passwordToBe = makePassword(8,username,'level10')+'\n'
 level9(passwordToBe,"level9")
 makeLevelHome(passwordToBe,"level10")
-sys.stdout.write("-")
-sys.stdout.flush()
+
 
 
 passwordToBe = makePassword(8,username,'level11')+'\n'
 level10(passwordToBe,"level10")
 makeLevelHome(passwordToBe,"level11")
-sys.stdout.write("-")
-sys.stdout.flush()
+
 
 
 passwordToBe = makePassword(8,username,'level12')+'\n'
 level11(passwordToBe,"level11")
 makeLevelHome(passwordToBe,"level12")
-sys.stdout.write("-")
-sys.stdout.flush()
+
 
 
 
@@ -484,9 +464,7 @@ while levelCount < 100:
     genRanLevel(passwordToBe,"level"+str(levelCount))
     levelCount += 1
     makeLevelHome(passwordToBe,"level"+str(levelCount))
-    sys.stdout.write("-")
-    sys.stdout.flush()
-sys.stdout.write("]\n") # this ends the progress bar
+
 print("ALL done!\n")
 
 
