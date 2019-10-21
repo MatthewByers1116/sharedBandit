@@ -486,6 +486,7 @@ while levelCount <= 100:
 
 sys.stdout.write("]")
 sys.stdout.flush()
+print("\n")
 print("ALL done!\n")
 
 
