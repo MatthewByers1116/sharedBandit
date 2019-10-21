@@ -39,7 +39,7 @@ def makePassword(len,username,levelname):
     hashed = hashlib.md5(encodeSeed.encode('utf-8'))
     based = base64.b64encode(hashed.digest())
     passwordToFind = str(based)
-    passwordToReturn = passwordToFind[0:len]
+    passwordToReturn = passwordToFind[2:len+2]
 
     return passwordToReturn
 
@@ -64,7 +64,7 @@ def makeOpener(levelName,stringToWrite):
     f.write(starBar+'\n')
     f.write(opener)
     f.write(starBar+'\n')
-    f.write("Once you find the password, log into the next level with the password.\nExample: You've completed level1 now SSH into level2")
+    f.write("Once you find the password, log into the next level with the password.\nExample: You've completed level1 now SSH into level2\n")
     f.write(starBar+'\n')
     f.close()
     makeMe("/home/" + levelName + "/.bashrc")
@@ -78,16 +78,19 @@ def level0(paswardone,levelName):
     g = open("/home/"+levelName+"/inhere.txt", "w")
     g.write(paswardone)
     g.close()
-    os.system("chown "+levelName+":"+levelName+" /home/"+levelName+"/inhere.txt;")
+    os.system('chown '+levelName+':'+levelName+' /home/'+levelName+'/inhere.txt;')
 
 
 def level1(passwardTwo,levelName):
+    print("level One initalized")
     makeOpener(levelName,heroNameGen() + "'s password for their " + goalNameGen() + " account is in inhere.txt but something is off, the file is hidden!\nYou will have to search for hidden files to get it.\n")
+    print("Opener finished")
     makeMe("/home/"+levelName+"/.inhere.txt")
     g = open("/home/"+levelName+"/.inhere.txt", "w")
     g.write(passwardTwo)
     g.close()
-    os.system("chown "+levelName+":"+levelName+" /home/"+levelName+"/.inhere.txt;")
+    print("file written")
+    os.system('chown '+levelName+':'+levelName+' /home/'+levelName+"/.inhere.txt;")
 
 
 def level2(passwardThree,levelName):
