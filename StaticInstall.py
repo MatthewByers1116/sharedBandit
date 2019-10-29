@@ -42,7 +42,7 @@ def makePassword(len,username,levelname):
     return passwordToReturn
 
 def makeFakePassword(len):
-    return makePassword(len,makeRanString(13),makeRanString(7),makeRanString(6))
+    return makePassword(len,makeRanString(13),makeRanString(7))
 
 def makeMe(desiredName):
     dirName = os.path.dirname(desiredName)
@@ -359,7 +359,6 @@ def genRanLevel(nextLevelPassword,levelName):
 
 print("Welcome to PolyBandit initial setup! Please follow the instructions as they come on screen.\n")
 username = input("Please enter your Penn State email address. Example: acb1234@psu.edu\n")
-confirmation = input("Please press [ENTER] after you have saved your code somewhere safe, and we will start the set up process.")
 print("Thank you! Setting up your levels now! Please hold...")
 sys.stdout.write("[")
 sys.stdout.flush()
